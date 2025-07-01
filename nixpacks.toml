@@ -5,12 +5,14 @@ nixPkgs = ["php83", "php83Packages.composer", "php83Extensions.pdo_mysql", "git"
 [phases.install]
 cmd = """
 composer install --no-dev --optimize-autoloader
+npm ci
 """
 
 [phases.build]
 cmd = """
 php artisan config:cache
 php artisan route:cache
+npm run build
 """
 
 [start]
