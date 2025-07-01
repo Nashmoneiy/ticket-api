@@ -121,7 +121,9 @@ public function checkout(Request $request) {
     ])->post('https://api.paystack.co/transaction/initialize', [
         'amount' => $amount,
         'email' => $request->email,
-        'callback_url' => "http://localhost:5173/home",
+        //'callback_url' => "http://localhost:5173/home",
+        'callback_url' => env('PAYSTACK_CALLBACK_URL'),
+
     ])->json();
 
     $order = new Orders;
